@@ -12,6 +12,8 @@
 #ifndef RSU_LOGGING_H
 #define RSU_LOGGING_H
 
+#include "osal_log_config.h"
+#include <logging_stack.h>
 #include <libRSU_OSAL.h>
 
 #ifdef __cplusplus
@@ -40,13 +42,13 @@ typedef enum {
 #endif
 
 /** debug log API */
-#define RSU_LOG_DBG(format, ...) RSU_logger(L_LOG_DBG, format, ##__VA_ARGS__)
+#define RSU_LOG_DBG(...)  LogDebug((__VA_ARGS__))
 /** info log API */
-#define RSU_LOG_INF(format, ...) RSU_logger(L_LOG_INF, format, ##__VA_ARGS__)
+#define RSU_LOG_INF(...)  LogInfo((__VA_ARGS__))
 /** warn log API */
-#define RSU_LOG_WRN(format, ...) RSU_logger(L_LOG_WRN, format, ##__VA_ARGS__)
+#define RSU_LOG_WRN(...)  LogWarn((__VA_ARGS__))
 /** error log API */
-#define RSU_LOG_ERR(format, ...) RSU_logger(L_LOG_ERR, format, ##__VA_ARGS__)
+#define RSU_LOG_ERR(...)  LogError((__VA_ARGS__))
 
 /**
  * @brief set logging level of logger system
@@ -107,32 +109,6 @@ LOG_MODULE_DECLARE(uniLibRSU, CONFIG_UNILIBRSU_LOG_LEVEL);
 
 #undef RSU_LOG_ERR
 #define RSU_LOG_ERR(format, ...) LOG_ERR(format, ##__VA_ARGS__)
-#endif
-
-#if PLATFORM_FREERTOS
-#include "osal_log.h"
-#include <errno.h>
-/**
- * @brief default log level
- *
- */
-#ifndef L_LOG_LVL
-#define L_LOG_LVL L_LOG_INF
-#endif
-
-/** debug log API */
-#undef RSU_LOG_DBG
-#define RSU_LOG_DBG(...)  DEBUG(__VA_ARGS__)
-/** info log API */
-#undef RSU_LOG_INF
-#define RSU_LOG_INF(...)  INFO(__VA_ARGS__)
-/** warn log API */
-#undef RSU_LOG_WRN
-#define RSU_LOG_WRN(...)  WARN(__VA_ARGS__)
-/** error log API */
-#undef RSU_LOG_ERR
-#define RSU_LOG_ERR(...)  ERROR(__VA_ARGS__)
-
 #endif
 
 #ifdef __cplusplus

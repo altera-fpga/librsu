@@ -11,4 +11,4 @@ target_sources(uniLibRSU PRIVATE "libRSU_misc.c")
 target_sources(uniLibRSU PRIVATE "libRSU_cb.c")
 target_sources(uniLibRSU PRIVATE "libRSU_image.c")
 
-target_compile_options(uniLibRSU PRIVATE -Wformat -Wformat-signedness)
+target_compile_options(uniLibRSU PRIVATE -Wformat-signedness)
