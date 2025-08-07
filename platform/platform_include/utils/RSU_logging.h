@@ -111,7 +111,6 @@ LOG_MODULE_DECLARE(uniLibRSU, CONFIG_UNILIBRSU_LOG_LEVEL);
 
 #if PLATFORM_FREERTOS
 #include "osal_log.h"
-#include <errno.h>
 /**
  * @brief default log level
  *

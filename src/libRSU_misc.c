@@ -5,7 +5,6 @@
 
 #include <libRSU_misc.h>
 #include <string.h>
-#include <errno.h>
 
 static RSU_OSAL_CHAR *reserved_names[] = {
 	"BOOT_INFO",
