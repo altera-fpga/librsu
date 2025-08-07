@@ -109,6 +109,31 @@ LOG_MODULE_DECLARE(uniLibRSU, CONFIG_UNILIBRSU_LOG_LEVEL);
 #define RSU_LOG_ERR(format, ...) LOG_ERR(format, ##__VA_ARGS__)
 #endif
 
+#if PLATFORM_FREERTOS
+#include "osal_log.h"
+/**
+ * @brief default log level
+ *
+ */
+#ifndef L_LOG_LVL
+#define L_LOG_LVL L_LOG_INF
+#endif
+
+/** debug log API */
+#undef RSU_LOG_DBG
+#define RSU_LOG_DBG(...)  DEBUG(__VA_ARGS__)
+/** info log API */
+#undef RSU_LOG_INF
+#define RSU_LOG_INF(...)  INFO(__VA_ARGS__)
+/** warn log API */
+#undef RSU_LOG_WRN
+#define RSU_LOG_WRN(...)  WARN(__VA_ARGS__)
+/** error log API */
+#undef RSU_LOG_ERR
+#define RSU_LOG_ERR(...)  ERROR(__VA_ARGS__)
+
+#endif
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
