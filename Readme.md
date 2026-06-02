@@ -25,7 +25,7 @@ We are using google unit test framework to unit test unified libRSU.
 ## Coverage report
 
 Coverage is enabled through CMake options: `-DCOVERAGE=ON`
-It uses gcov and lcov to genarate the coverage report. For running unit-test with coverage and generate coverage report.
+It uses gcov and lcov to generate the coverage report. For running unit-test with coverage and generate coverage report.
 
 `cmake -S . -B build -DUNIT_TEST=ON -G"Ninja" -DCOVERAGE=ON && cmake --build build --target coverage && ctest --test-dir build && cmake --build build --target coverage-report`
 
